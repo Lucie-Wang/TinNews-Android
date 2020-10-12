@@ -5,13 +5,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.luciewang.tinnews.R;
 import com.luciewang.tinnews.databinding.FragmentSaveBinding;
 import com.luciewang.tinnews.model.Article;
 import com.luciewang.tinnews.repository.NewsRepository;
@@ -44,6 +45,10 @@ public class SaveFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        SavedNewsAdapter savedNewsAdapter = new SavedNewsAdapter();
+        binding.newsSavedRecyclerView.setAdapter(savedNewsAdapter);
+        binding.newsSavedRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+
         NewsRepository repository = new NewsRepository(getContext());
         viewModel = new ViewModelProvider(this, new NewsViewModelFactory(repository)).get(SaveViewModel.class);
         viewModel
@@ -60,6 +65,9 @@ public class SaveFragment extends Fragment {
             @Override
             public void onOpenDetails(Article article) {
                 Log.d("onOpenDetails", article.toString());
+                SaveFragmentDirections.ActionNavigationSaveToNavigationDetails direction = SaveFragmentDirections.actionNavigationSaveToNavigationDetails(article);
+                NavHostFragment.findNavController(SaveFragment.this).navigate(direction);
+
             }
 
             @Override
@@ -67,7 +75,6 @@ public class SaveFragment extends Fragment {
                 viewModel.deleteSavedArticle(article);
             }
         });
-
     }
 
 }
