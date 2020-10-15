@@ -11,9 +11,8 @@ It can also be achieved by using the thumb up and thumb down buttons instead of 
 </p>
 
 <div align="center">
-
-</div>
-<div align="center">
+  
+![TinNews App Demo ](./tinnews_demo.gif)
 
 </div>
 
