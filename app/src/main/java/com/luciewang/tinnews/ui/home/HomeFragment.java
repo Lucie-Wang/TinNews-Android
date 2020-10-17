@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment implements CardStackListener {
 
     @Override
     public void onCardRewound() {
-
+        Log.d("CardStackView", "Rewound " + layoutManager.getTopPosition());
     }
 
     @Override
