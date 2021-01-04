@@ -24,7 +24,6 @@ public class CardSwipeAdapter extends RecyclerView.Adapter<CardSwipeAdapter.Card
         notifyDataSetChanged();
     }
 
-
     // 2. Adapter overrides:
     @NonNull
     @Override

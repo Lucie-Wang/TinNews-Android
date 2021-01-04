@@ -90,7 +90,6 @@ public class HomeFragment extends Fragment implements CardStackListener {
         binding.homeCardStackView.swipe();
     }
 
-
     @Override
     public void onCardDragging(Direction direction, float ratio) {
 
